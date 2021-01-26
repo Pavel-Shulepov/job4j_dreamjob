@@ -1,15 +1,20 @@
 package ru.pshulepov.dreamjob.model;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Post {
 
     private int id;
     private String name;
+    private String description;
+    private LocalDateTime created;
 
-    public Post(int id, String name) {
+    public Post(int id, String name, String description, LocalDateTime created) {
         this.id = id;
         this.name = name;
+        this.created = created;
+        this.description = description;
     }
 
     public int getId() {
@@ -26,6 +31,22 @@ public class Post {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
     }
 
     @Override

@@ -2,6 +2,7 @@ package ru.pshulepov.dreamjob.service;
 
 import ru.pshulepov.dreamjob.model.Post;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,9 +14,9 @@ public class Store {
     private Map<Integer, Post> posts = new ConcurrentHashMap<>();
 
     private Store() {
-        posts.put(1, new Post(0, "Junior Java Job"));
-        posts.put(2, new Post(1, "Middle Java Job"));
-        posts.put(3, new Post(2, "Senior Java Job"));
+        posts.put(1, new Post(0, "Junior Java Job", "Новичек в программировании", LocalDateTime.now()));
+        posts.put(2, new Post(1, "Middle Java Job", "Самостоятельный опытный программист", LocalDateTime.now()));
+        posts.put(3, new Post(2, "Senior Java Job", "Наставник, тимлид, архитектор ПО", LocalDateTime.now()));
     }
 
     public static Store instOf() {
