@@ -25,17 +25,31 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Новай кандидат.
+                Новай кандидат
             </div>
-            <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label>Имя</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Сохранить</button>
-                </form>
-            </div>
+            <form action="<%=request.getContextPath()%>/candidate/save" method="post">
+                <div class="form-group">
+                    <label>Имя</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="form-group">
+                    <label>Фамилия</label>
+                    <input type="text" class="form-control" name="surname">
+                </div>
+                <div class="form-group">
+                    <label>Год рождения</label>
+                    <input type="text" class="form-control" name="yearBirth">
+                </div>
+                <div class="form-group">
+                    <label>Стаж работы (лет)</label>
+                    <input type="text" class="form-control" name="experience">
+                </div>
+                <div class="form-group">
+                    <label>Телефон для связи</label>
+                    <input type="text" class="form-control" name="telNumber">
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
         </div>
     </div>
 </div>

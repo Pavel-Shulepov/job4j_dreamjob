@@ -32,13 +32,21 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Название</th>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Фамилия</th>
+                        <th scope="col">Год рождения</th>
+                        <th scope="col">Стаж</th>
+                        <th scope="col">Телефон</th>
                     </tr>
                     </thead>
                     <tbody>
                     <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
                     <tr>
-                        <td><%= can.getName() %></td>
+                        <td><%=can.getName()%></td>
+                        <td><%=can.getSurname()%></td>
+                        <td><%=can.getYearBirth()%></td>
+                        <td><%=can.getExperience()%></td>
+                        <td><%=can.getTelNumber()%></td>
                     </tr>
                     <% } %>
                     </tbody>
