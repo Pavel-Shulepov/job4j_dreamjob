@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="ru.pshulepov.dreamjob.service.Store" %>
-<%@ page import="ru.pshulepov.dreamjob.model.Post" %>
+<%@ page import="ru.pshulepov.dreamjob.model.Candidate" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,35 +21,54 @@
     <title>Работа мечты</title>
 </head>
 <body>
+
+<%
+    String id = request.getParameter("id");
+    Candidate candidate = new Candidate(0, "");
+    if (id != null) {
+        candidate = Store.instOf().findByIdCandidate(Integer.parseInt(id));
+    }
+%>
+
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
-            <div class="card-header">
-                Новай кандидат
+            <div class="row">
+                <div class="card" style="width: 100%">
+                    <div class="card-header">
+                        <%if (id == null) { %>
+                        Новый кандидат.
+                        <% } else { %>
+                        Редактирование кандидата.
+                        <% } %>
+                    </div>
+                    <div class="card-body">
+                        <form action="<%=request.getContextPath()%>/candidate/save?id=<%=candidate.getId()%>" method="post">
+                            <div class="form-group">
+                                <label>Имя</label>
+                                <input type="text" class="form-control" name="name" value="<%=candidate.getName()%>">
+                            </div>
+                            <div class="form-group">
+                                <label>Фамилия</label>
+                                <input type="text" class="form-control" name="surname" value="<%=candidate.getSurname()%>">
+                            </div>
+                            <div class="form-group">
+                                <label>Год рождения</label>
+                                <input type="text" class="form-control" name="yearBirth" value="<%=candidate.getYearBirth()%>">
+                            </div>
+                            <div class="form-group">
+                                <label>Стаж работы (лет)</label>
+                                <input type="text" class="form-control" name="experience"  value="<%=candidate.getExperience()%>">
+                            </div>
+                            <div class="form-group">
+                                <label>Телефон для связи</label>
+                                <input type="text" class="form-control" name="telNumber" value="<%=candidate.getTelNumber()%>">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <form action="<%=request.getContextPath()%>/candidate/save" method="post">
-                <div class="form-group">
-                    <label>Имя</label>
-                    <input type="text" class="form-control" name="name">
-                </div>
-                <div class="form-group">
-                    <label>Фамилия</label>
-                    <input type="text" class="form-control" name="surname">
-                </div>
-                <div class="form-group">
-                    <label>Год рождения</label>
-                    <input type="text" class="form-control" name="yearBirth">
-                </div>
-                <div class="form-group">
-                    <label>Стаж работы (лет)</label>
-                    <input type="text" class="form-control" name="experience">
-                </div>
-                <div class="form-group">
-                    <label>Телефон для связи</label>
-                    <input type="text" class="form-control" name="telNumber">
-                </div>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </form>
         </div>
     </div>
 </div>
