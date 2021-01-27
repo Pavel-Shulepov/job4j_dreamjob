@@ -3,6 +3,7 @@ package ru.pshulepov.dreamjob.servlet;
 import ru.pshulepov.dreamjob.model.Candidate;
 import ru.pshulepov.dreamjob.service.Store;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +22,12 @@ public class CandidateServlet extends HttpServlet {
                         Integer.parseInt(req.getParameter("yearBirth")),
                         Integer.parseInt(req.getParameter("experience")),
                         req.getParameter("telNumber")));
-        resp.sendRedirect(req.getContextPath() + "/candidates.jsp");
+        resp.sendRedirect(req.getContextPath() + "/candidates.do");
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("candidates", Store.instOf().findAllCandidates());
+        req.getRequestDispatcher("candidates.jsp").forward(req, resp);
+    }
 }
