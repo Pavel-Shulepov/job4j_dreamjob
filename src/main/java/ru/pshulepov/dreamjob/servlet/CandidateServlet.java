@@ -1,7 +1,7 @@
 package ru.pshulepov.dreamjob.servlet;
 
 import ru.pshulepov.dreamjob.model.Candidate;
-import ru.pshulepov.dreamjob.service.Store;
+import ru.pshulepov.dreamjob.service.MemStore;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +14,7 @@ public class CandidateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
-        Store
+        MemStore
                 .instOf()
                 .save(new Candidate(Integer.parseInt(req.getParameter("id")),
                         req.getParameter("name"),
@@ -27,7 +27,7 @@ public class CandidateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("candidates", Store.instOf().findAllCandidates());
+        req.setAttribute("candidates", MemStore.instOf().findAllCandidates());
         req.getRequestDispatcher("candidates.jsp").forward(req, resp);
     }
 }

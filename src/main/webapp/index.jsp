@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="ru.pshulepov.dreamjob.service.Store" %>
+<%@ page import="ru.pshulepov.dreamjob.service.MemStore" %>
 <%@ page import="ru.pshulepov.dreamjob.model.Post" %>
 <!doctype html>
 <html lang="en">

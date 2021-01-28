@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="ru.pshulepov.dreamjob.service.Store" %>
+<%@ page import="ru.pshulepov.dreamjob.service.MemStore" %>
 <%@ page import="ru.pshulepov.dreamjob.model.Candidate" %>
 <!doctype html>
 <html lang="en">
@@ -26,7 +26,7 @@
     String id = request.getParameter("id");
     Candidate candidate = new Candidate(0, "");
     if (id != null) {
-        candidate = Store.instOf().findByIdCandidate(Integer.parseInt(id));
+        candidate = MemStore.instOf().findByIdCandidate(Integer.parseInt(id));
     }
 %>
 

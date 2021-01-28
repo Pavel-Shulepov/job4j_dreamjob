@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="ru.pshulepov.dreamjob.service.Store" %>
+<%@ page import="ru.pshulepov.dreamjob.service.MemStore" %>
 <%@ page import="ru.pshulepov.dreamjob.model.Post" %>
 <%@ page import="java.time.LocalDateTime" %>
 <!doctype html>
@@ -26,7 +26,7 @@
     String id = request.getParameter("id");
     Post post = new Post(0, "", "", LocalDateTime.now());
     if (id != null) {
-        post = Store.instOf().findByIdPost(Integer.parseInt(id));
+        post = MemStore.instOf().findByIdPost(Integer.parseInt(id));
     }
 %>
 <div class="container pt-3">
